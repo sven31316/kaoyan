@@ -70,10 +70,10 @@
         </colgroup>
         <tbody>
         <tr>
-            <td><label>所在省市</label></td>
+            <td><label for="ssdm">所在省市</label></td>
             <td align="left">
 
-                <select class="form-control" name="ssdm" id="ssdm" class="ch-select">
+                <select class="form-control" name="ssdm" id="ssdm">
                     <option value="">--选择省市--</option>
                     <option value="11">(11)北京市</option>
                     <option value="12">(12)天津市</option>
@@ -111,7 +111,7 @@
                     <option value="82">(82)澳门特别行政区</option>
                 </select>
             </td>
-            <td><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;招生单位</label></td>
+            <td><label for="dwmc">&nbsp;&nbsp;&nbsp;&nbsp;招生单位</label></td>
             <td align="left">
                 <input type="text" id="dwmc" name="dwmc" class="form-control" placeholder="输入招生单位名称" value=""
                        maxlength="40" autocomplete="off">
@@ -119,9 +119,9 @@
 
         </tr>
         <tr>
-            <td><label>门类类别</label></td>
+            <td><label for="mldm">门类类别</label></td>
             <td align="left">
-                <select class="form-control" name="mldm" id="mldm" class="ch-select" onchange="initYjxk();">
+                <select class="form-control" name="mldm" id="mldm" onchange="initYjxk();">
                     <option value="">--选择门类--</option>
                     <optgroup label="专业学位">
                         <option value="zyxw">专业学位</option>
@@ -145,10 +145,10 @@
                 <input type="hidden" name="mlmc" id="mlmc">
             </td>
             <td>
-                <span class="zsml-required">*</span>
-                <label id="xklbstr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学科类别</label></td>
+                <span class="text-danger">*</span>
+                <label  for="yjxkdm">&nbsp;&nbsp;&nbsp;学科类别</label></td>
             <td align="left">
-                <select class="form-control" name="yjxkdm" id="yjxkdm" class="ch-select" onchange="initZy();">
+                <select class="form-control" name="yjxkdm" id="yjxkdm"  onchange="initZy();">
                     <option value="">--选择学科类别--</option>
                     <option value="0101">(0101)哲学</option>
                     <option value="0201">(0201)理论经济学</option>
@@ -334,18 +334,18 @@
             </td>
         </tr>
         <tr>
-            <td><label>专业名称</label></td>
+            <td><label for="zymc">专业名称</label></td>
             <td align="left">
-                <select class="form-control" name="zymc" id="zymc" class="ch-select">
+                <select class="form-control" name="zymc" id="zymc">
                     <option value="">--选择专业--</option>
                 </select>
             </td>
             <td>
                 <span class="zsml-required"></span>
-                <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 学习方式</label></td>
+                <label for="xxfs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 学习方式</label></td>
             <td align="left">
                 <br>
-                <select class="form-control" name="xxfs" id="xxfs" class="ch-select">
+                <select class="form-control" name="xxfs" id="xxfs">
                     <option value="" selected="">--选择学习方式--</option>
                     <option value="1">全日制</option>
                     <option value="2">非全日制</option>

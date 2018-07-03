@@ -6,9 +6,22 @@ $(document).ready(function () {
      */
     $("#addNewEnroll").click(function () {
         $(this).hide();
-        $("#announcement").show('slow', function () {
-
-        });
+        $("#announcement").show('slow');
+$.ajax({
+    url: '/path/to / file',
+    type: 'default GET (Other values: POST)',
+    dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+    data: {param1: 'value1'},
+})
+.done(function() {
+    console.log("success");
+})
+.fail(function() {
+    console.log("error");
+})
+.always(function() {
+    console.log("complete");
+});
 
     })
     /**
@@ -65,6 +78,22 @@ $(document).ready(function () {
     $("#showpersoninfo1").click(function () {
         $("#province").hide('slow')
         $("#personinfo1").show('slow')
+        $.ajax({
+            url: '/path/to/file',
+            type: 'default GET (Other values: POST)',
+            dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+            data: {param1: 'value1'},
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+
     });
     $("#uptoprovince").click(function () {
         $("#province").show('slow')
