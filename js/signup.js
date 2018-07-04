@@ -97,7 +97,7 @@ function checktwopass() {
     var pwd1 = $("#password1").val();
     var pwd2 = $("#password2").val();
     <!-- 对比两次输入的密码 -->
-    if (pwd1.length >= 6) {
+    if (pwd1.length >= 1) {
         if (pwd1 == pwd2) {
             $("#passdismatch").hide();
             $("#passmatch").show("slow")
