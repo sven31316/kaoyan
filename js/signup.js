@@ -1,39 +1,51 @@
-$(document).ready(function() {
-    $("#phonenumber").blur(function() {
+$(document).ready(function () {
+    $("#phonenumber").blur(function () {
         checkMobile()
     });
-    $("#phonenumber").on('input propertychange', function() {
+    $("#phonenumber").on('input propertychange', function () {
         checkMobile()
     });
-    $("#password1").on('input propertychange', function() {
-        checkpassstrenth()
+    $("#password1").on('input propertychange', function () {
+        checkpassstrenth();
         checktwopass()
     });
-    $("#password2").on('input propertychange', function() {
+    $("#password2").on('input propertychange', function () {
         checktwopass()
     });
-    $("#credentnumber").on('input propertychange', function() {
+    $("#credentnumber").on('input propertychange', function () {
         checkcredentnumber()
     });
-    $("#signupbtn").click(function(event) {
-
+    $("#signupbtn").click(function (event) {
         $.ajax({
-                url: "accoutn",
-                type: 'POST',
-                dataType: 'json',
-                data: { param1: 'value1' },
-            })
-            .done(function() {
+            url: "http://ciiibv.natappfree.cc/commomuser/rigesterCommomUser",
+            type: 'POST',
+            dataType: 'json',
+            data: JSON.stringify({
+                "id": "identity",
+                "name": $("#name").val(),
+                "phone": $("#phonenumber").val(),
+                "email": $("#signemail").val(),
+                "password": $("#password1").val(),
+                "certificateStyle": $("#credentialtype").val(),
+                "certificateNumber": $("#credentnumber").val(),
+            }),
+            contentType: 'application/json; charset=UTF-8',
+            timeout: 1000,
+            cache: false,
+        })
+            .done(function () {
                 console.log("success");
-                alert("注册成功!")
-                window.location.href="login.html"
+                alert("注册成功!");
+
+                window.location.href = "/stdlogin"
             })
-            .fail(function() {
+            .fail(function () {
                 console.log("error");
             })
-            .always(function() {
+            .always(function () {
                 console.log("complete");
-            }); /* Act on the event */
+            });
+        /* Act on the event */
     });
 });
 
