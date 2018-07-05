@@ -14,16 +14,16 @@
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_529525_wqxwui4lqh.css">
     <link rel="shortcut icon" href="https://favicon.yandex.net/favicon/google.cn">
 
-<style>
-    .foot {
-    margin: 0 0;
-    padding: 20px 0;
-    /*line-height: 30px;*/
-    background: #282828;
-    color: #ababab;
-    height: 100px;
-    }
-</style>
+    <style>
+        .foot {
+            margin: 0 0;
+            padding: 20px 0;
+            /*line-height: 30px;*/
+            background: #282828;
+            color: #ababab;
+            height: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -77,7 +77,8 @@
                 <p class="text-center">距离考研还有<span class="text-warning" id="daojishi"></span></p>
                 <p class="text-center"><a
                         href="mbaindex.html" class="btn btn-primary btn-lg ">点击查询</a>&nbsp;&nbsp;<a href="login.html"
-                                                                                                    class="btn btn-primary btn-lg ">点击登录</a>
+                                                                                                    class="btn btn-primary btn-lg "
+                                                                                                    id="tologinbtn">点击登录</a>
                 </p>
                 <br>
                 <div class="masking">
@@ -423,6 +424,17 @@
 </div>
 <script type="application/javascript  " src="../lib/jquery-3.3.1.js"></script>
 <script type="application/javascript  " src="../lib/bootstrap.min.css"></script>
+<script>
+    $("#tologinbtn").click(function () {
+        var flag=$.cookie("islogin")
+        if (flag=='no'||flag==null) {
+
+            window.location.href='login.html'
+        }else if(flag=='yes'){
+
+            window.location.href="center.html"
+        }
+    })</script>
 <script type="application/javascript" src="../js/index.js"></script>
 </body>
 </html>

@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     show_time();
 
-
 })
 
 function show_time() {
