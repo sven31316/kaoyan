@@ -9,6 +9,32 @@ $(document).ready(function () {
         alert('请点击左侧导航栏进行操作')
     }
 
+
+
+    $.ajax({
+        url: local + "/superManager/getManagerById/" + id,
+        type: 'POST',
+        dataType: 'json',
+
+        contentType: 'application/json; charset=UTF-8',
+        timeout: 1000,
+        cache: false,
+    })
+        .done(function (data) {
+
+            $("#adminidchange").val(data.data.id)
+            $("#adminnamechange").val(data.data.name);
+            $("#adminpasschange").val(data.data.password)
+
+
+        })
+        .fail(function (data) {
+
+            alert(data.message)
+        })
+        .always(function () {
+            console.log("complete");
+        });
     $("#addadminlink").click(function () {
         $(".col-md-8").hide()
         $("#addadmin").show()
@@ -31,6 +57,7 @@ $(document).ready(function () {
 
         /* Act on the event */
     })
+
 
     /**
      * @Author: yanni
@@ -84,15 +111,10 @@ $(document).ready(function () {
         }
         else {
             $.ajax({
-                url: local + '/superManager/designAccount',
+                url: local + '/superManager/designAccount/'+$('#adminid').val()+"/"+$('#adminpass1').val()+"/"+$("#zhaoshengdanwei").val(),
                 type: 'post',
                 dataType: 'json',
-                data: JSON.stringify({
-                    'name': $('#adminid').val(),
-                    "phone": "1212121121",
-                    "password": $('#adminpass1').val(),
-                    "zhaoshengUnit": $("#zhaoshengdanwei").val()
-                }),
+
                 contentType: 'application/json; charset=UTF-8',
                 timeout: 1000,
                 cache: false
@@ -100,7 +122,7 @@ $(document).ready(function () {
                 .done(function (data) {
 
                     if (data.success == true) {
-                        alert(data.message)
+                        console.log(data.message)
                         window.location.href = '/superindex'
                     } else if (data.success == false) {
                         alert(data.message)
@@ -109,7 +131,7 @@ $(document).ready(function () {
 
                 })
                 .fail(function (data) {
-                    alert(data.message)
+                    console.log(data.message)
                 })
                 .always(function () {
                     console.log("complete");
@@ -143,7 +165,6 @@ $(document).ready(function () {
                     {"data": "id"},
                     {"data": "name"},
                     {"data": "password"},
-                    {"data": "zhaoshengUnit"},
                     {"data": null},
                     {"data": null}
 
@@ -173,7 +194,7 @@ $(document).ready(function () {
                         "sSortDescending": ": 以降序排列此列"
                     }
                 }, columnDefs: [{
-                    targets: 4,
+                    targets: 3,
                     render: function (data, type, row, meta) {
                         return "<a  class='btn btn-primary"
                             + "' onclick='toupdateadmin(\""
@@ -181,7 +202,7 @@ $(document).ready(function () {
                             + "\")' href='#' data-toggle=\"modal\" data-target=\"#changeadmininfo\">修改</a>"
                     }
                 }, {
-                    targets: 5,
+                    targets: 4,
                     render: function (data, type, row, meta) {
 
                         return "<a  class='btn btn-danger"
@@ -338,6 +359,7 @@ $(document).ready(function () {
         .always(function () {
             console.log("complete");
         });
+
 
 
     /**

@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    if ($.cookie('islogin')=='yes'){
+        location.assign('/stdcenter')
+    }
     $("#username").val($.cookie('name'))
     $("#password").val($.cookie('password'))
     $("#loginbtn").click(function (event) {
@@ -12,6 +15,7 @@ $(document).ready(function () {
             // // sessionStorage.setItem('name',$('#name').va)
             // window.location.href = "center.html"
             if ($("#rempass").is(":checked") == true) {
+
                 $.cookie('name', $("#username").val())
                 $.cookie('password', $("#password").val())
             }else if ($("#rempass").is(":checked")==false){
@@ -20,7 +24,7 @@ $(document).ready(function () {
                 $("#password").val("")
             }
             $.ajax({
-                url: "http://fwybgp.natappfree.cc/commonUser/login",
+                url: "/commomuser/login",
                 type: 'POST',
                 dataType: 'json',
                 data: JSON.stringify({
@@ -35,6 +39,7 @@ $(document).ready(function () {
                 .done(function (data) {
 
                     alert(data.message);
+                    $.cookie('islogin','yes')
                     $.cookie('accountid', data.data.id)
                     $.cookie('password', data.data.password)
                     $.cookie('name', data.data.name)
@@ -44,7 +49,7 @@ $(document).ready(function () {
                     $.cookie('phone', data.data.phone)
 
 
-                    window.location.href = "center.html"
+                    window.location.href = "/stdcenter"
                 })
                 .fail(function () {
                     alert("用户名或密码错误!")
