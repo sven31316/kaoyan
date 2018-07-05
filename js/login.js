@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $("#username").val($.cookie('name'))
+    $("#password").val($.cookie('password'))
     $("#loginbtn").click(function (event) {
 
 
@@ -9,7 +11,14 @@ $(document).ready(function () {
             // $.session.set('password', $("#password").val());
             // // sessionStorage.setItem('name',$('#name').va)
             // window.location.href = "center.html"
+            if ($("#rempass").is(":checked") == true) {
+                $.cookie('name', $("#username").val())
+                $.cookie('password', $("#password").val())
+            }else if ($("#rempass").is(":checked")==false){
 
+                $("#username").val("")
+                $("#password").val("")
+            }
             $.ajax({
                 url: "http://fwybgp.natappfree.cc/commonUser/login",
                 type: 'POST',
@@ -32,7 +41,7 @@ $(document).ready(function () {
                     $.cookie('certificateStyle', data.data.certificateStyle)
                     $.cookie('certificateNumber', data.data.certificateNumber)
                     $.cookie('email', data.data.email)
-                    $.cookie('phone',data.data.phone)
+                    $.cookie('phone', data.data.phone)
 
 
                     window.location.href = "center.html"
@@ -44,6 +53,7 @@ $(document).ready(function () {
                 .always(function () {
                     console.log("complete");
                 });
+
         }
         /* Act on the event */
         /* Act on the event */
