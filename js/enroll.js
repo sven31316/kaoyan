@@ -4,10 +4,13 @@ $(document).ready(function () {
             alert("请保证自己的信息属实!")
         }
     }
+
+    local = "http://xyppj5.natappfree.cc"
+
     $("#genkaoshenghao").click(function () {
-      chekallowed()
+        chekallowed()
         $.ajax({
-            url: 'http://fwybgp.natappfree.cc/commomuser/addExam',
+            url: local + '/commomuser/addExam',
             type: 'post',
             dataType: 'json',
             data: JSON.stringify({
@@ -53,7 +56,7 @@ $(document).ready(function () {
         })
             .done(function (data) {
                 alert(data.message)
-                window.location.href = "pay.html"
+                window.location.href = "/stdpay"
 
             })
             .fail(function (data) {
@@ -71,8 +74,39 @@ $(document).ready(function () {
      */
     $("#addNewEnroll").click(function () {
         $(this).hide();
+        $("#showenroll").hide();
+
         $("#announcement").show('slow');
 
+    })
+    $('#showenroll').click(function () {
+        $.ajax({
+            url: local + "/commomuser/lookExam/"+$.cookie("accountid"),
+            type: 'post',
+            dataType: 'json',
+
+            contentType: 'application/json; charset=UTF-8',
+            timeout: 1000,
+            cache: false
+        })
+            .done(function (data) {
+                $("#stdname").val(data.data.name)
+                $("#stdexamway").val(data.data.examWay)
+                $("#specialplan").val(data.data.specialPlan)
+                $("#sex").val(data.data.sex)
+                $("#fieldplace").val(data.data.filePlace)
+                $("#certifiatesy").val(data.data.certificateStyle)
+                $("#certificatenum").val(data.data.certificateNumber)
+                $("#wantdepartment").val(data.data.wantDepartmentName)
+                $("#wantmajor").val(data.data.wantMajorName)
+                $("#exampoint").val(data.data.examPointName)
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+            });
     })
     /**
      * @author YangZhengqian
@@ -117,7 +151,7 @@ $(document).ready(function () {
         $("#announcement").show('slow', function () {
 
         });
-        $("#commitment").hide()
+        $("#commitment").hide('slow')
     })
     /**
      * @Author: yanni
@@ -144,6 +178,12 @@ $(document).ready(function () {
         });
         /* Act on the event */
     });
+    $("#uptobaokaodanwei").click(function () {
+        $("#baokaodian").hide('slow')
+        $("#baokaodanwei").show('slow')
+
+
+    })
     /**
      * @Author: yanni
      * @Description:填写个人信息
@@ -204,16 +244,14 @@ $(document).ready(function () {
     $("#zhaoshengdanwei1").change(function () {
 
         $.ajax({
-            url: 'http://fwybgp.natappfree.cc/commonUser/getSchoolNameByProvince/' + $("#zhaoshengdanwei1").val(),
+            url: local + '/commonUser/getSchoolNameByProvince/' + $("#zhaoshengdanwei1").val(),
             type: 'post',
             dataType: 'json',
-
             contentType: 'application/json; charset=UTF-8',
             timeout: 1000,
             cache: false
         })
             .done(function (data) {
-
                 $("#zhaoshengdanwei2").empty()
                 for (var i = 0; i < data.data.length; i++) {
 

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>用户中心</title>
     <link href="../lib/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,6 +56,54 @@
         <div class="col-md-12">
             <div class="text-center">
                 <button id="addNewEnroll" class="btn btn-primary"><strong>+</strong>新增报名信息</button>
+                <button id="showenroll" data-toggle="modal" data-target="#baominxinxi" class="btn btn-outline-info">
+                    显示报名信息
+                </button>
+            </div>
+        </div>
+        <div class="modal fade" id="baominxinxi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">报考信息</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>姓名</label>
+                        <input disabled class="form-control" id="stdname"/>
+                        <label>考试方式</label>
+                        <input disabled class="form-control" id="stdexamway"/>
+     <label>专项计划</label>
+                        <input disabled class="form-control" id="specialplan"/>
+
+                       <label>性别</label>
+                        <input disabled class="form-control" id="sex"/>
+                        <label>档案所在地</label>
+
+                        <input disabled class="form-control" id="fieldplace"/>
+
+                        <label>证件类型</label>
+                        <input disabled class="form-control" id="certifiatesy"/>
+
+                        <label>证件号</label>
+                        <input disabled class="form-control" id="certificatenum"/>
+
+                        <label>报考院系</label>
+                        <input disabled class="form-control" id="wantdepartment"/>
+
+                        <label>报考专业</label>
+                        <input disabled class="form-control" id="wantmajor"/>
+
+                        <label>考试点</label>
+                        <input disabled class="form-control" id="exampoint"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="announcement" style="display: none" class="col-md-12">
@@ -140,7 +188,7 @@
 
             <div class="form-select">
                 <div class="form-group row">
-                    <input id="accountid" style="display:none" value="" />
+                    <input id="accountid" style="display:none" value=""/>
                     <label for="zhaoshengdanwei1" class="col-md-2 text-right">招生单位:</label>
                     <div class="col-md-5">
                         <select id="zhaoshengdanwei1" class="form-control" name="">
@@ -278,13 +326,13 @@
                 <div class="form-group row">
                     <label class="col-md-2 text-right">考生通讯地址:</label>
                     <div class="col-md-6">
-                        <input id="tongxundizhi" type="text" class="form-control" />
+                        <input id="tongxundizhi" type="text" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-md-2 text-right">邮政编码:</label>
                     <div class="col-md-6">
-                        <input id="youzhengbianma" type="text" class="form-control" />
+                        <input id="youzhengbianma" type="text" class="form-control"/>
                     </div>
                 </div>
             </div>
@@ -616,7 +664,7 @@
 
                 <div class="center-form">
                     <p><label class="text-danger" for="allowed"
-                    >本人承诺信息完整属实,符合相关规定&nbsp;</label><input id="allowed" value="" type="checkbox" />
+                    >本人承诺信息完整属实,符合相关规定&nbsp;</label><input id="allowed" value="" type="checkbox"/>
                     </p><label for="yanzhengmainput">验证码:</label>
                     <input id="yanzhengmainput" class="form-control" value="WEwT" width="300px">
                     <br>
