@@ -1,14 +1,19 @@
 $(document).ready(function () {
 
+    var interfaces = JSON.parse($.cookie('interfaces'))
+
     show_time();
+    $("#tombaindex").click(function () {
+        location.assign(interfaces.mbaindex)
+    })
     $("#tologinbtn").click(function () {
-        var flag=$.cookie("islogin")
-        if (flag=='no'||flag==null) {
+        var flag = $.cookie("islogin")
+        if (flag == 'no' || flag == null) {
 
-            location.assign('/stdlogin')
-        }else if(flag=='yes'){
+            location.assign(interfaces.stdlogin)
+        } else if (flag == 'yes') {
 
-            location.assign("/stdcenter")
+            location.assign(interfaces.stdcenter)
         }
     })
 

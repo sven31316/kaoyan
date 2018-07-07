@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
 
-    local = "http://xyppj5.natappfree.cc"
+    local = $.cookie('localurl')
+    var interfaces = JSON.parse($.cookie('interfaces'))
     welcom()
 
     function welcom() {
@@ -135,7 +136,7 @@ $(document).ready(function () {
 
                     if (data.success == true) {
                         console.log(data.message)
-                        window.location.href = '/superindex'
+                        window.location.href = interfaces.superindex
                     } else if (data.success == false) {
                         alert(data.message)
                     }
@@ -412,7 +413,7 @@ $(document).ready(function () {
             .always(function () {
                 console.log("complete");
             });
-        window.location.href = 'superindex.html'
+        window.location.href = interfaces.superindex
     })
 
 
@@ -455,7 +456,7 @@ function deladmin(adminid) {
 
             if (data.success == true) {
                 alert(data.message)
-                window.location.href = 'superindex.html'
+                window.location.href =interfaces.superindex
             } else if (data.success == false) {
                 alert(data.message)
             }

@@ -1,9 +1,14 @@
 $(document).ready(function () {
+    local=$.cookie('localurl')
+    var interfaces = JSON.parse($.cookie('interfaces'))
     if ($.cookie('islogin') == 'yes') {
-        location.assign('/stdcenter')
+        location.assign('center.html')
     }
     $("#username").val($.cookie('name'))
     $("#password").val($.cookie('password'))
+    $("#tosignup").click(function () {
+        location.assign(interfaces.stdsignup)
+    })
     $("#loginbtn").click(function (event) {
 
 
@@ -24,7 +29,7 @@ $(document).ready(function () {
                 $("#password").val("")
             }
             $.ajax({
-                url: "http://xyppj5.natappfree.cc/commomuser/login",
+                url: local+"/commomuser/login",
                 type: 'POST',
                 dataType: 'json',
                 data: JSON.stringify({
@@ -49,7 +54,7 @@ $(document).ready(function () {
                     $.cookie('phone', data.data.account.phone)
                     $.cookie('key', data.data.key)
 
-                    window.location.href = "/stdcenter"
+                    window.location.href =interfaces.stdpay
                 })
                 .fail(function () {
                     alert("用户名或密码错误!")

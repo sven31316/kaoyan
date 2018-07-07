@@ -1,7 +1,7 @@
 /*login.js*/
 $(document).ready(function () {
-    local = 'http://empcpd.natappfree.cc/'
-
+    local = $.cookie('localurl')
+    var interfaces = JSON.parse($.cookie('interfaces'))
     $("#loginbutton").click(function () {
         if ((($("#adminusername").val().length > 0) && ($("#adminpassword").val().length > 0)) && (($("#superusername").val().length == 0) && ($("#superpassword").val().length == 0))) {
             $.ajax({
@@ -19,7 +19,7 @@ $(document).ready(function () {
                 .done(function (data) {
                     if (data.success == true) {
                         alert(data.message)
-                        window.location.href = 'adminindex.html'
+                        window.location.href =interfaces.stdindex
                     } else if (data.success == false) {
                         alert(data.message)
                     }
@@ -51,7 +51,7 @@ $(document).ready(function () {
 
                     if (data.success == true) {
                         alert(data.message)
-                        window.location.href = 'superindex.html'
+                        window.location.href = interfaces.superindex
                     } else if (data.success == false) {
                          alert(data.message)
                     }

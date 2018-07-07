@@ -4,8 +4,8 @@ $(document).ready(function () {
             alert("请保证自己的信息属实!")
         }
     }
-
-    local = "http://xyppj5.natappfree.cc"
+    var interfaces = JSON.parse($.cookie('interfaces'))
+    local = $.cookie('localurl')
 
     $("#genkaoshenghao").click(function () {
         chekallowed()
@@ -56,7 +56,7 @@ $(document).ready(function () {
         })
             .done(function (data) {
                 alert(data.message)
-                window.location.href = "/stdpay"
+                window.location.href = interfaces.stdpay
 
             })
             .fail(function (data) {

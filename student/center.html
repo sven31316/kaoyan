@@ -20,13 +20,15 @@
     <script type="text/javascript" src="../lib/dataTables.bootstrap4.min.js"></script>
 
     <script type="application/javascript  " src="../lib/jquery.cookie.js"></script>
+    <script type="application/javascript  " src="../js/center.js"></script>
     <script>
-
-        // var flag=$.cookie("islogin")
-        // if (flag=='no'||flag==null) {
-        //     alert("请登录")
-        //     window.location.href='/stdlogin'
-        // }
+        var interfaces = JSON.parse($.cookie('interfaces'))
+        local = $.cookie('localurl')
+        var flag=$.cookie("islogin")
+        if (flag=='no'||flag==null) {
+            alert("请登录")
+            window.location.href=interfaces.stdlogin
+        }
 
 
     </script>
@@ -68,7 +70,7 @@
         <!--<form class="form-inline my-2 my-lg-0">-->
         <!--<input class="form-control mr-sm-2" type="search" placeholder="搜索..." aria-label="Search">-->
         <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">查询</button>-->
-        <!--</form>--><a href="/stdaccountedit" class="btn-link">用户信息</a><a id="logout" href="#"
+        <!--</form>--><a href='#' id="accountinfolink" class="btn-link">用户信息</a><a id="logout" href="#"
                                                                             class="btn-link text-danger">退出登录</a>
     </div>
 </nav>
@@ -109,7 +111,7 @@
                     <span id="span3" class="noinfor-text">未开通</span>
                 </div>
                 <div class="col-md-3 p-4 border center-hover">
-                    <a href="/stdmbaindex">专业目录</a>
+                    <a href="tombaindex">专业目录</a>
                     <br>
                     <span id="span4" class="infor-text">已开通</span>
                 </div>
@@ -124,12 +126,12 @@
                     <span id="span6" class="noinfor-text">未开通</span>
                 </div>
                 <div class="col-md-3 p-4 border center-hover">
-                    <a href="zhunkaozheng.html">准考证下载</a>
+                    <a href="#" id="zhunkaozzhenglink">准考证下载</a>
                     <br>
                     <span id="span7" class="noinfor-text">未开通</span>
                 </div>
                 <div class="col-md-3 p-4 border center-hover">
-                    <a href="/stdenroll">网上报名</a>
+                    <a href="#" id="toenrolllink">网上报名</a>
                     <br>
                     <span id="span8" class="noinfor-text">未开通</span>
                 </div>
@@ -170,50 +172,7 @@
     </div>
 </footer>
 <script>
-    $(document).ready(function () {
 
-
-        switch ($.cookie('key')) {
-            case "1":
-                for (i = 2; i < 6; i++) {
-                    $("#span" + i).removeClass('noinfor-text')
-                    $("#span" + i).html('已开通')
-                    $("#span" + i).addClass('infor-text')
-                }
-                break;
-            case "2":
-                for (i = 2; i < 6; i++) {
-                    $("#span" + i).removeClass('noinfor-text')
-                    $("#span" + i).html('已开通')
-                    $("#span" + i).addClass('infor-text')
-                }
-                $("#span8").html("已开通")
-                $("#span8").addClass('infor-text')
-                break;
-            case "3":
-                for (i = 2; i < 6; i++) {
-                    $("#span" + i).removeClass('noinfor-text')
-                    $("#span" + i).html('已开通')
-                    $("#span" + i).addClass('infor-text')
-                }
-                $("#span7").html("已开通")
-                $("#span7").addClass('infor-text')
-                break;
-            case '4':
-                for (i = 2; i < 6; i++) {
-                    $("#span" + i).removeClass('noinfor-text')
-                    $("#span" + i).html('已开通')
-                    $("#span" + i).addClass('infor-text')
-                }
-                break;
-            case '5':
-                for (i = 1; i < 7; i++) {
-                    $("#span" + i).removeClass('noinfor-text')
-                    $("#span" + i).html('已开通')
-                    $("#span" + i).addClass('infor-text')
-                }
-        }
-    });
 </script>
 </body>
 </html>

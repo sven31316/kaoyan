@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    local=$.cookie('localurl')
+    var interfaces = JSON.parse($.cookie('interfaces'))
     $("#phonenumber").blur(function () {
         checkMobile()
     });
@@ -16,8 +18,11 @@ $(document).ready(function () {
         checkcredentnumber()
     });
     $("#signupbtn").click(function (event) {
+        if ($("input:text").val().length===0){
+            alert("kongkdgjsd")
+        }
         $.ajax({
-            url: "http://ciiibv.natappfree.cc/commomuser/rigesterCommomUser",
+            url:local+ "/commomuser/rigesterCommomUser",
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify({
@@ -37,7 +42,7 @@ $(document).ready(function () {
                 console.log("success");
                 alert("注册成功!");
 
-                window.location.href = "/stdlogin"
+                window.location.href = interfaces.stdlogin
             })
             .fail(function () {
                 console.log("error");
