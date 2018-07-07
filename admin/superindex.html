@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>超级管理员后台</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="../lib/sidebar.css">
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_529525_39813guke8h93sor.css">
     <!--<link rel="stylesheet" href="lib/global.css">-->
@@ -23,6 +23,18 @@
     <script type="text/javascript" src="../lib/sidebar.js"></script>
     <script type="text/javascript" src="../lib/global.js"></script>
     <script type="text/javascript" src="../js/superindex.js"></script>
+    <script>
+        var interfaces = JSON.parse($.cookie('interfaces'))
+        let local = $.cookie('localurl')
+        var flag = $.cookie("isadminlogin")
+
+        if (flag != "yes" || flag == null ) {
+            alert("请登录")
+            window.location.href = interfaces.adminlogin
+        }
+
+
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -102,7 +114,7 @@
                 </li>
 
                 <li class="left-nav-item">
-                    <a href="javascript:;" id="logout"><i class="iconfont icon-sign-out"></i><span>注销</span>
+                    <a href="javascript:;" id="adminlogout"><i class="iconfont icon-sign-out"></i><span>注销</span>
                     </a>
                 </li>
             </ul>

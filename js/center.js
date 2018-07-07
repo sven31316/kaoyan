@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     var interfaces = JSON.parse($.cookie('interfaces'))
-    local = $.cookie('localurl')
+    let local = $.cookie('localurl')
     switch ($.cookie('key')) {
         case null:
             for (i = 2; i < 6; i++) {

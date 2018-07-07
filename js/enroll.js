@@ -1,70 +1,82 @@
 $(document).ready(function () {
     function chekallowed() {
         if ($("#allowed").is(":checked") == false) {
-            alert("请保证自己的信息属实!")
+
+            return false
+        } else {
+            return true
         }
     }
+
     var interfaces = JSON.parse($.cookie('interfaces'))
-    local = $.cookie('localurl')
+    let local = $.cookie('localurl')
 
     $("#genkaoshenghao").click(function () {
-        chekallowed()
-        $.ajax({
-            url: local + '/commomuser/addExam',
-            type: 'post',
-            dataType: 'json',
-            data: JSON.stringify({
-                "id": "ident",
-                "account_id": $("#accountid").val(),
-                "zhaoshengUnit": $("#zhaoshengdanwei1").val(),
-                "examWay": $("#kaoshifangshi").val(),
-                "specialPlan": $("#zhuanxiangjihua").val(),
-                "name": $("#studentname").val(),
-                "nameSpell": $("#studentnamepinyin").val(),
-                "nowSolier": $("#xianyijunren").val(),
-                "nation": $("#kaoshengminzu").val(),
-                "sex": $("input[name=sex]:checked").val(),
-                "marriage": $("input[name=marriage]:checked").val(),
-                "policy": $("#zhengzhimianmao").val(),
-                "connectAddress": $("#tongxundizhi").val(),
-                "connectPostalcode": $("#youzhengbianma").val(),
-                "certificateStyle": $("#zhengjianleixing").val(),
-                "certificateNumber": $("#zhengjianhaoma").val(),
-                "nativePlace": $("#kaoshengjiguan1").val() + $("#kaoshengjiguan2").val() + $("#kaoshengjiguan3").val(),
-                "hukouPlace": $("#hukou1").val() + $("#hukou2").val() + $("#hukou3").val(),
-                "hukouDetail": $("#hukouxiangxixinxi").val(),
-                "birthPlace": $("#chushengdi1").val() + $("#chushengdi2").val() + $("#chushengdi3").val(),
-                "nowStudyOrWorkUnit": $("#xianzaixuexi").val(),
-                "filePlace": $("#dangansuozaidi").val(),
-                "fileUnitName": $("#danganmingzi").val(),
-                "fileUnitAddress": $("#dangandizhi").val(),
-                "fileUnitPostalcode": $("#danganyoubian").val(),
-                "rewardAndPunishment": $("#jianglichufen").val(),
-                "wantDepartmentName": $("#baokaoyuanxiao").val(),
-                "wantMajorName": $("#baokaozhuanye").val(),
-                "researchWay": $("#yanjiufangxiang").val(),
-                "learnWay": $("#xuexifangshi").val(),
-                "examSubject": $("#kaoshikemu").val(),
-                "examPointAddress": $("#baokaodianchengshi").val(),
-                "examPointName": $("#baokaodianmingcheng").val(),
+        if (chekallowed() == true) {
 
 
-            }),
-            contentType: 'application/json; charset=UTF-8',
-            timeout: 1000,
-            cache: false
-        })
-            .done(function (data) {
-                alert(data.message)
-                window.location.href = interfaces.stdpay
+            $.ajax({
+                url: local + '/commomuser/addExam',
+                type: 'post',
+                dataType: 'json',
+                data: JSON.stringify({
+                    "id": "ident",
+                    "account_id": $("#accountid").val(),
+                    "zhaoshengUnit": $("#zhaoshengdanwei1").val(),
+                    "examWay": $("#kaoshifangshi").val(),
+                    "specialPlan": $("#zhuanxiangjihua").val(),
+                    "name": $("#studentname").val(),
+                    "nameSpell": $("#studentnamepinyin").val(),
+                    "nowSolier": $("#xianyijunren").val(),
+                    "nation": $("#kaoshengminzu").val(),
+                    "sex": $("input[name=sex]:checked").val(),
+                    "marriage": $("input[name=marriage]:checked").val(),
+                    "policy": $("#zhengzhimianmao").val(),
+                    "connectAddress": $("#tongxundizhi").val(),
+                    "connectPostalcode": $("#youzhengbianma").val(),
+                    "certificateStyle": $("#zhengjianleixing").val(),
+                    "certificateNumber": $("#zhengjianhaoma").val(),
+                    "nativePlace": $("#kaoshengjiguan1").val() + $("#kaoshengjiguan2").val() + $("#kaoshengjiguan3").val(),
+                    "hukouPlace": $("#hukou1").val() + $("#hukou2").val() + $("#hukou3").val(),
+                    "hukouDetail": $("#hukouxiangxixinxi").val(),
+                    "birthPlace": $("#chushengdi1").val() + $("#chushengdi2").val() + $("#chushengdi3").val(),
+                    "nowStudyOrWorkUnit": $("#xianzaixuexi").val(),
+                    "filePlace": $("#dangansuozaidi").val(),
+                    "fileUnitName": $("#danganmingzi").val(),
+                    "fileUnitAddress": $("#dangandizhi").val(),
+                    "fileUnitPostalcode": $("#danganyoubian").val(),
+                    "rewardAndPunishment": $("#jianglichufen").val(),
+                    "wantDepartmentName": $("#baokaoyuanxiao").val(),
+                    "wantMajorName": $("#baokaozhuanye").val(),
+                    "researchWay": $("#yanjiufangxiang").val(),
+                    "learnWay": $("#xuexifangshi").val(),
+                    "examSubject": $("#kaoshikemu").val(),
+                    "examPointAddress": $("#baokaodianchengshi").val(),
+                    "examPointName": $("#baokaodianmingcheng").val(),
 
+
+                }),
+                contentType: 'application/json; charset=UTF-8',
+                timeout: 1000,
+                cache: false
             })
-            .fail(function (data) {
-                alert(data.message)
-            })
-            .always(function () {
-                console.log("complete");
-            });
+                .done(function (data) {
+                    $.cookie("isenrolled", "yes")
+                    alert(data.message)
+                    window.location.href = interfaces.stdpay
+
+                })
+                .fail(function (data) {
+                    $.cookie('isenrolled', "no")
+                    alert("失败了")
+
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+        } else {
+            alert("请保证自己的信息属实!")
+        }
     })
 
     /**
@@ -81,7 +93,7 @@ $(document).ready(function () {
     })
     $('#showenroll').click(function () {
         $.ajax({
-            url: local + "/commomuser/lookExam/"+$.cookie("accountid"),
+            url: local + "/commomuser/lookExam/" + $.cookie("accountid"),
             type: 'post',
             dataType: 'json',
 

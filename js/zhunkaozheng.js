@@ -1,6 +1,5 @@
-
 $(document).ready(function () {
-    local=$.cookie('localurl')
+    let local = $.cookie('localurl')
     var interfaces = JSON.parse($.cookie('interfaces'))
     $.ajax({
         url: local + "/commomuser/lookExam/" + $.cookie("accountid"),
@@ -31,12 +30,13 @@ $(document).ready(function () {
         });
 
     $('#down').click(function () {
-        bdhtml=window.document.body.innerHTML;
-        sprnstr="<!--startprint-->";
-        eprnstr="<!--endprint-->";
-        prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17);
-        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
-        window.document.body.innerHTML=prnhtml;
+
+        bdhtml = window.document.body.innerHTML;
+        sprnstr = "<!--startprint-->";
+        eprnstr = "<!--endprint-->";
+        prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17);
+        prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));
+        window.document.body.innerHTML = prnhtml;
         window.print();
     });
 })

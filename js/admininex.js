@@ -8,7 +8,7 @@
 
 $(document).ready(function () {
     $("#showkaoshengtable").show()
-    local = $.cookie('localurl')
+    let local = $.cookie('localurl')
     var interfaces = JSON.parse($.cookie('interfaces'))
     $("#showkaosheng").click(function () {
         $("#showkaoshengtable").show()

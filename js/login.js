@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    local=$.cookie('localurl')
+    var local = $.cookie('localurl')
     var interfaces = JSON.parse($.cookie('interfaces'))
-    if ($.cookie('islogin') == 'yes') {
+    if (($.cookie('islogin') == 'yes') && ($.cookie('accountid') != null)) {
         location.assign('center.html')
     }
     $("#username").val($.cookie('name'))
@@ -29,7 +29,7 @@ $(document).ready(function () {
                 $("#password").val("")
             }
             $.ajax({
-                url: local+"/commomuser/login",
+                url: local + "/commomuser/login",
                 type: 'POST',
                 dataType: 'json',
                 data: JSON.stringify({
@@ -42,19 +42,23 @@ $(document).ready(function () {
                 cache: false,
             })
                 .done(function (data) {
+                    if (data.success) {
+                        alert(data.message);
+                        $.cookie('islogin', 'yes')
+                        $.cookie('accountid', data.data.account.id)
+                        $.cookie('password', data.data.account.password)
+                        $.cookie('name', data.data.account.name)
+                        $.cookie('certificateStyle', data.data.account.certificateStyle)
+                        $.cookie('certificateNumber', data.data.account.certificateNumber)
+                        $.cookie('email', data.data.account.email)
+                        $.cookie('phone', data.data.account.phone)
+                        $.cookie('key', data.data.key)
 
-                    alert(data.message);
-                    $.cookie('islogin', 'yes')
-                    $.cookie('accountid', data.data.account.id)
-                    $.cookie('password', data.data.account.password)
-                    $.cookie('name', data.data.account.name)
-                    $.cookie('certificateStyle', data.data.account.certificateStyle)
-                    $.cookie('certificateNumber', data.data.account.certificateNumber)
-                    $.cookie('email', data.data.account.email)
-                    $.cookie('phone', data.data.account.phone)
-                    $.cookie('key', data.data.key)
-
-                    window.location.href =interfaces.stdpay
+                        window.location.href = interfaces.stdcenter
+                    }
+                    else {
+                        alert(data.message)
+                    }
                 })
                 .fail(function () {
                     alert("用户名或密码错误!")

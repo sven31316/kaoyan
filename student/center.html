@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>管理员后台</title>
+    <title>用户中心</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="../lib/sidebar.css">
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_529525_39813guke8h93sor.css">
     <!--<link rel="stylesheet" href="lib/global.css">-->
@@ -23,9 +23,10 @@
     <script type="application/javascript  " src="../js/center.js"></script>
     <script>
         var interfaces = JSON.parse($.cookie('interfaces'))
-        local = $.cookie('localurl')
+        let local = $.cookie('localurl')
         var flag=$.cookie("islogin")
-        if (flag=='no'||flag==null) {
+
+        if (flag=='no'||flag==null||($.cookie('accountid')==null)) {
             alert("请登录")
             window.location.href=interfaces.stdlogin
         }
@@ -111,7 +112,7 @@
                     <span id="span3" class="noinfor-text">未开通</span>
                 </div>
                 <div class="col-md-3 p-4 border center-hover">
-                    <a href="tombaindex">专业目录</a>
+                    <a href="#" id="tombaindexlink">专业目录</a>
                     <br>
                     <span id="span4" class="infor-text">已开通</span>
                 </div>

@@ -1,7 +1,8 @@
 /*login.js*/
 $(document).ready(function () {
-    local = $.cookie('localurl')
+    let local = $.cookie('localurl')
     var interfaces = JSON.parse($.cookie('interfaces'))
+    $.cookie('isadminlogin', "no")
     $("#loginbutton").click(function () {
         if ((($("#adminusername").val().length > 0) && ($("#adminpassword").val().length > 0)) && (($("#superusername").val().length == 0) && ($("#superpassword").val().length == 0))) {
             $.ajax({
@@ -19,7 +20,8 @@ $(document).ready(function () {
                 .done(function (data) {
                     if (data.success == true) {
                         alert(data.message)
-                        window.location.href =interfaces.stdindex
+                        $.cookie('isadminlogin', "yes")
+                        window.location.href = interfaces.adminindex
                     } else if (data.success == false) {
                         alert(data.message)
                     }
@@ -51,9 +53,10 @@ $(document).ready(function () {
 
                     if (data.success == true) {
                         alert(data.message)
+                        $.cookie('isadminlogin', "yes")
                         window.location.href = interfaces.superindex
                     } else if (data.success == false) {
-                         alert(data.message)
+                        alert(data.message)
                     }
 
 
@@ -68,7 +71,6 @@ $(document).ready(function () {
             ((($("#adminusername").val().length == 0) && ($("#adminpass").val().length == 0))) === 0) {
             alert("用户名或密码不能为空!")
         } else {
-            alert("ssdf")
         }
     })
 

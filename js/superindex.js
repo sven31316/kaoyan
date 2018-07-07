@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-    local = $.cookie('localurl')
+    let local = $.cookie('localurl')
     var interfaces = JSON.parse($.cookie('interfaces'))
     welcom()
 
@@ -456,7 +456,7 @@ function deladmin(adminid) {
 
             if (data.success == true) {
                 alert(data.message)
-                window.location.href =interfaces.superindex
+                window.location.href = interfaces.superindex
             } else if (data.success == false) {
                 alert(data.message)
             }

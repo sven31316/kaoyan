@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    local=$.cookie('localurl')
+    let local = $.cookie('localurl')
     var interfaces = JSON.parse($.cookie('interfaces'))
     $("#phonenumber").blur(function () {
         checkMobile()
@@ -18,38 +18,45 @@ $(document).ready(function () {
         checkcredentnumber()
     });
     $("#signupbtn").click(function (event) {
-        if ($("input:text").val().length===0){
-            alert("kongkdgjsd")
-        }
-        $.ajax({
-            url:local+ "/commomuser/rigesterCommomUser",
-            type: 'POST',
-            dataType: 'json',
-            data: JSON.stringify({
-                "id": "identity",
-                "name": $("#name").val(),
-                "phone": $("#phonenumber").val(),
-                "email": $("#signemail").val(),
-                "password": $("#password1").val(),
-                "certificateStyle": $("#credentialtype").val(),
-                "certificateNumber": $("#credentnumber").val(),
-            }),
-            contentType: 'application/json; charset=UTF-8',
-            timeout: 1000,
-            cache: false,
-        })
-            .done(function () {
-                console.log("success");
-                alert("注册成功!");
+        let flag = ($("#name").val().length == 0) && ($("#password1").val() == 0) && ($("#phonenumber").val().length == 0) && ($("#signemail").val().length == 0)
 
-                window.location.href = interfaces.stdlogin
+        if (flag) {
+            alert("不能为空!")
+        } else {
+            $.ajax({
+                url: local + "/commomuser/rigesterCommomUser",
+                type: 'POST',
+                dataType: 'json',
+                data: JSON.stringify({
+                    "id": "identity",
+                    "name": $("#name").val(),
+                    "phone": $("#phonenumber").val(),
+                    "email": $("#signemail").val(),
+                    "password": $("#password1").val(),
+                    "certificateStyle": $("#credentialtype").val(),
+                    "certificateNumber": $("#credentnumber").val(),
+                }),
+                contentType: 'application/json; charset=UTF-8',
+                timeout: 1000,
+                cache: false,
             })
-            .fail(function () {
-                console.log("error");
-            })
-            .always(function () {
-                console.log("complete");
-            });
+                .done(function () {
+                    console.log("success");
+
+                    $.cookie('islogin', 'yes')
+                    $.cookie("name",$("#name").val(),)
+                    $.cookie("password",$("#password1").val(),)
+
+                    alert("注册成功!");
+                    window.location.href = interfaces.stdcenter
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+        }
         /* Act on the event */
     });
 });

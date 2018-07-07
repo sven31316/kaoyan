@@ -8,7 +8,7 @@ $(document).ready(function () {
     })
     $("#tologinbtn").click(function () {
         var flag = $.cookie("islogin")
-        if (flag == 'no' || flag == null) {
+        if (flag == 'no' || flag == null||$.cookie('accountid')==null) {
 
             location.assign(interfaces.stdlogin)
         } else if (flag == 'yes') {

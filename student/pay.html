@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>用户中心</title>
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
     <link href="../lib/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="../lib/enroll.css">
@@ -51,21 +52,30 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
+
+            <br>
             <p>填写成功!您的报名号:<span class="text-info" id="enrollnumber"></span> 请牢记</p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 text-center">
-            <button id="jiaofei" class="btn btn-primary">网上缴费</button>
+            <button id="jiaofei" class="btn btn-primary btn-lg">网上缴费</button>
+
             <img id="alipayimage" style="display: none" src="../img/alipay.jpg" width="30%"/>
             <p id="jiaofeiwarning" class="text-danger d-none">必须网上缴费,否则本次报名无效!</p>
-        <h2 id="enrollsuccess" class="d-none">报名成功!</h2></div>
+            <h2 id="enrollsuccess" class="d-none">报名成功!</h2></div>
     </div>
     <div class="col-md-12 text-center">
+        <br>
         <a id="toenrolllink" href="#" class="btn btn-outline-primary">返回报名首页</a>
     </div>
 
 </div>
+<script>
+    $(document).ready(function () {
+        $("#enrollnumber").append($.cookie('accountid'))
+    })
 
+</script>
 </body>
 </html>
