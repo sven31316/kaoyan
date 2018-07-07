@@ -1,39 +1,63 @@
-$(document).ready(function() {
-    $("#phonenumber").blur(function() {
+$(document).ready(function () {
+    let local = $.cookie('localurl')
+    var interfaces = JSON.parse($.cookie('interfaces'))
+    $("#phonenumber").blur(function () {
         checkMobile()
     });
-    $("#phonenumber").on('input propertychange', function() {
+    $("#phonenumber").on('input propertychange', function () {
         checkMobile()
     });
-    $("#password1").on('input propertychange', function() {
-        checkpassstrenth()
+    $("#password1").on('input propertychange', function () {
+        checkpassstrenth();
         checktwopass()
     });
-    $("#password2").on('input propertychange', function() {
+    $("#password2").on('input propertychange', function () {
         checktwopass()
     });
-    $("#credentnumber").on('input propertychange', function() {
+    $("#credentnumber").on('input propertychange', function () {
         checkcredentnumber()
     });
-    $("#signupbtn").click(function(event) {
+    $("#signupbtn").click(function (event) {
+        let flag = ($("#name").val().length == 0) && ($("#password1").val() == 0) && ($("#phonenumber").val().length == 0) && ($("#signemail").val().length == 0)
 
-        $.ajax({
-                url: "accoutn",
+        if (flag) {
+            alert("不能为空!")
+        } else {
+            $.ajax({
+                url: local + "/commomuser/rigesterCommomUser",
                 type: 'POST',
                 dataType: 'json',
-                data: { param1: 'value1' },
+                data: JSON.stringify({
+                    "id": "identity",
+                    "name": $("#name").val(),
+                    "phone": $("#phonenumber").val(),
+                    "email": $("#signemail").val(),
+                    "password": $("#password1").val(),
+                    "certificateStyle": $("#credentialtype").val(),
+                    "certificateNumber": $("#credentnumber").val(),
+                }),
+                contentType: 'application/json; charset=UTF-8',
+                timeout: 1000,
+                cache: false,
             })
-            .done(function() {
-                console.log("success");
-                alert("注册成功!")
-                window.location.href="login.html"
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            }); /* Act on the event */
+                .done(function () {
+                    console.log("success");
+
+                    $.cookie('islogin', 'yes')
+                    $.cookie("name",$("#name").val(),)
+                    $.cookie("password",$("#password1").val(),)
+
+                    alert("注册成功!");
+                    window.location.href = interfaces.stdcenter
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+        }
+        /* Act on the event */
     });
 });
 
@@ -85,7 +109,7 @@ function checktwopass() {
     var pwd1 = $("#password1").val();
     var pwd2 = $("#password2").val();
     <!-- 对比两次输入的密码 -->
-    if (pwd1.length >= 6) {
+    if (pwd1.length >= 1) {
         if (pwd1 == pwd2) {
             $("#passdismatch").hide();
             $("#passmatch").show("slow")

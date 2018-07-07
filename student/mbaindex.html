@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>主页</title>
+    <title>主页</title><link rel="shortcut icon" href="../img/favicon.ico"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -12,7 +12,16 @@
     <link rel="stylesheet" href="../lib/global.css"/>
     <link rel="stylesheet" href="../lib/mbaindex.css">
     <link rel="shortcut icon" href="https://favicon.yandex.net/favicon/google.cn">
-
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../lib/fontawesome.css">
+    <link rel="stylesheet" href="../lib/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" href="../lib/global.css"/>
+    <script type="text/javascript" src="../lib/jquery-3.3.1.js"></script>
+    <script src="../lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../lib/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../lib/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="../js/mbaindex.js"></script>
 
 </head>
 <body>
@@ -146,9 +155,9 @@
             </td>
             <td>
                 <span class="text-danger">*</span>
-                <label  for="yjxkdm">&nbsp;&nbsp;&nbsp;学科类别</label></td>
+                <label for="yjxkdm">&nbsp;&nbsp;&nbsp;学科类别</label></td>
             <td align="left">
-                <select class="form-control" name="yjxkdm" id="yjxkdm"  onchange="initZy();">
+                <select class="form-control" name="yjxkdm" id="yjxkdm">
                     <option value="">--选择学科类别--</option>
                     <option value="0101">(0101)哲学</option>
                     <option value="0201">(0201)理论经济学</option>
@@ -354,14 +363,34 @@
         </tr>
 
         <tr>
-            <td class="text-center" colspan="4"><input type="button" name="button"
-                                                       onclick="return zsmlSearchFormCheck()"
+            <td class="text-center" colspan="4"><input id="searchbtn" type="button" name="button"
+
                                                        class="btn btn-primary btn-lg"
                                                        value="查询"></td>
         </tr>
 
         </tbody>
     </table>
+    <div class="col-md-12">
+
+        <table class="table table-bordered table-hover" id="searchout">
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>省市</th>
+                <th>地址</th>
+                <th>修改</th>
+
+            </tr>
+            </thead>
+
+
+        </table>
+    </div>
 </div>
+
+<script>
+
+</script>
 </body>
 </html>

@@ -1,10 +1,12 @@
-.index-header{
+.index-header {
     text-align: center;
 }
-.cent-btn{
+
+.cent-btn {
     margin: 100px auto;
     text-align: center;
 }
+
 .center-form {
     margin: auto auto;
     padding: 30px 50px;
@@ -14,27 +16,37 @@
     min-width: 400px;
     max-width: 600px;
 }
-.noinfor-text{
+
+.noinfor-text {
     padding: 2px 4px;
     background: lightgray;
-    color:white;
+    color: white;
 }
-.infor-text{
+
+.infor-text {
     padding: 2px 4px;
     background: lightgreen;
     color: white;
 }
-.center-hover{
+
+.center-hover {
     text-decoration: none;
 }
-.center-hover:hover{
+
+.center-hover:hover {
     background: lightskyblue;
     cursor: pointer;
 }
-.foot{
+
+footer {
+    width: 100%;
+    /*height: 100px; !* footer的高度一定要是固定值*!*/
+    /*margin: 30px auto;*/
     margin: 0 0;
+    position: absolute;
     padding: 20px 0;
-    /*line-height: 30px;*/
+    bottom: 0px;
+    left: 0px;
     background: #282828;
     color: #ababab;
     height: 100px;

@@ -1,0 +1,14 @@
+{
+  "data": {
+    "account": {
+      "id": "111",
+      "name": "小马",
+      "phone": "121324353",
+      "email": "22323@qq.com",
+      "password": "221212123",
+      "certificate_style": "2323",
+      "certificate_number": "2232323",
+      "account_style": "2"
+    }
+  }
+}

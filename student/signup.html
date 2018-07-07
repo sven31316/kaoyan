@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>浏览器下载</title>
+    <title></title><link rel="shortcut icon" href="../img/favicon.ico"/>
     <link href="../lib/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="../lib/login.css">
-    <link rel="shortcut icon" href="https://favicon.yandex.net/favicon/google.cn">
+    <link rel="stylesheet" type="text/css" href="../lib/login.css"><script type="application/javascript  " src="../lib/jquery-3.3.1.js"></script>
+    <!--<link rel="stylesheet" href="../lib/global.css">--><script src="../lib/jquery.cookie.js"></script>
 
-    <script type="application/javascript  " src="../lib/jquery-3.3.1.js"></script>
     <script type="application/javascript  " src="../lib/bootstrap.min.css"></script>
     <script type="application/javascript" src="../js/signup.js"></script>
+
 </head>
 
 <body>
@@ -51,7 +51,7 @@
     </div>
 </nav>
 <div class="container">
-    <form class="center-form" action="index_submit" method="get" accept-charset="utf-8">
+    <div class="center-form" >
         <!--<div class="infor-text">-->
         <!--<h2>“账号”可用于登录本网站各服务平台</h2>-->
         <!--<div class="regist-tip-detail">-->
@@ -59,31 +59,40 @@
         <!--</div>-->
         <!--</div>-->
         <h2 class="text-center">请注册</h2>
-        <label>手机号: </label>
-        <input class="form-control" type="text" name="" id="phonenumber" placeholder="请输入手机号:"
+        <label for="name">姓名:</label>
+        <input id="name" class="form-control" required type="text" name="" placeholder="请输入姓名:" value="">
+        <label for="phonenumber">手机号: </label>
+        <input class="form-control" required type="text" name="" id="phonenumber" placeholder="请输入手机号:"
                value="">
         <small id="nophonenumber" style="display: none;" class="form-text text-danger ">不是完整的11位手机号或者正确的手机号前七位!</small>
-        <label>密码: </label>
-        <input class="form-control" type="password" id="password1" name="" placeholder="请输入密码:" value="">
-        <small id="nopassword1" style="display: none;" class="form-text">密码强度 <span class="text-danger">强</span></small>  <small id="nopassword2" style="display: none;" class="form-text">密码强度 <span class="text-danger">中</span></small>  <small id="nopassword3" style="display: none;" class="form-text">密码强度 <span class="text-danger">弱</span></small>
+        <label for="password1">密码: </label>
+        <input class="form-control" required type="password" id="password1" name="" placeholder="请输入密码:" value="">
+        <small id="nopassword1" style="display: none;" class="form-text">密码强度 <span class="text-danger">强</span></small>
+        <small id="nopassword2" style="display: none;" class="form-text">密码强度 <span class="text-danger">中</span></small>
+        <small id="nopassword3" style="display: none;" class="form-text">密码强度 <span class="text-danger">弱</span></small>
         <label>确认密码: </label>
-        <input class="form-control" type="password" id="password2" name="" placeholder="请再次输入密码:" value="">
-        <small id="passmatch" style="display: none;" class="form-text text-info">两次密码相同!</small>     <small id="passdismatch" style="display: none;" class="form-text text-danger">两次密码不同!</small>  <label>姓名:</label>
-        <input class="form-control" type="password" name="" placeholder="请输入姓名:" value="">
-        <label>证件类型:</label>
-        <select name="credentialtype" id="credentialtype" aria-invalid="false" class="form-control">
-            <option value="SFZ">居民身份证</option>
-            <option value="SFZ_GAT">港澳台身份证</option>
-            <option value="SFZ_HQ">华侨身份证/Passport(无身份证者可填护照号)</option>
-            <option value="QIT">其他</option>
+        <input class="form-control" required type="password" id="password2" name="" placeholder="请再次输入密码:" value="">
+        <small id="passmatch" style="display: none;" class="form-text text-info">两次密码相同!</small>
+        <small id="passdismatch" style="display: none;" class="form-text text-danger">两次密码不同!</small>
+
+        <label for="credentialtype">证件类型:</label>
+        <select name="credentialtype" id="credentialtype" aria-invalid="false" class="form-control" required>
+            <option value="0">居民身份证</option>
+            <option value="1">港澳台身份证</option>
+            <option value="2">华侨身份证/Passport(无身份证者可填护照号)</option>
+            <option value="3">其他</option>
 
 
-        </select><label>证件号码:</label>
-        <input class="form-control" id="credentnumber" type="text" name="" placeholder="请输入证件号码" value="">
-        <small id="nocredent" style="display: none;" class="form-text text-danger">证件号码格式非法!</small>    <br>
-        <a href="login.html" id="signupbtn" class="btn btn-info btn-block">注册</a>
+        </select><label for="credentnumber">证件号码:</label>
+        <input class="form-control" required id="credentnumber" type="text" name="" placeholder="请输入证件号码" value="">
+        <small id="nocredent" style="display: none;" class="form-text text-danger">证件号码格式非法!</small>
+        <label for="signemail">电子邮箱:</label>
+        <input class="form-control" required="required" id="signemail" type="email" placeholder="请输入邮箱" value=""/>
+        <br>
+        <input type="submit" id="signupbtn" class="btn btn-info btn-block" value="注册"/>
 
-    </form>
+    </div>
 </div>
+
 </body>
 </html>
