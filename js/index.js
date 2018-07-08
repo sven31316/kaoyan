@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     var interfaces = JSON.parse($.cookie('interfaces'))
-
+    let local = $.cookie('localurl')
     show_time();
     $("#tombaindex").click(function () {
         location.assign(interfaces.mbaindex)

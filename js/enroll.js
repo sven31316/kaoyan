@@ -249,8 +249,8 @@ $(document).ready(function () {
     });
 
     $("#uptobaokaodian").click(function () {
-        $("#yanzhengma").hide()
-        $("#baokaodian").show()
+        $("#yanzhengma").hide("slow")
+        $("#baokaodian").show("slow")
 
     })
     $("#zhaoshengdanwei1").change(function () {
