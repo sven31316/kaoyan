@@ -21,7 +21,7 @@ $(document).ready(function () {
 
 function show_time() {
     window.setTimeout("show_time()", 1000);
-    BirthDay = new Date("2018-12-24");//改成你的计时日期
+    BirthDay = new Date("2019-12-24");//改成你的计时日期
     today = new Date();
     timeold = (BirthDay.getTime() - today.getTime());
     sectimeold = timeold / 1000
