@@ -12,7 +12,7 @@ $(document).ready(function () {
     $("#loginbtn").click(function (event) {
 
 
-        if (($("#username").val().length == 0) || ($("#password").val().length == 0)) {
+        if (($("#username").val().length === 0) || ($("#password").val().length == 0)) {
             alert("用户名或密码不能为空!")
         } else {
             // $.session.set('name', $("#username").val());
@@ -44,15 +44,15 @@ $(document).ready(function () {
                 .done(function (data) {
                     if (data.success) {
                         alert(data.message);
-                        $.cookie('islogin', 'yes')
-                        $.cookie('accountid', data.data.account.id)
-                        $.cookie('password', data.data.account.password)
-                        $.cookie('name', data.data.account.name)
-                        $.cookie('certificateStyle', data.data.account.certificateStyle)
-                        $.cookie('certificateNumber', data.data.account.certificateNumber)
-                        $.cookie('email', data.data.account.email)
-                        $.cookie('phone', data.data.account.phone)
-                        $.cookie('key', data.data.key)
+                        $.cookie('islogin', 'yes');
+                        $.cookie('accountid', data.data.account.id);
+                        $.cookie('password', data.data.account.password);
+                        $.cookie('name', data.data.account.name);
+                        $.cookie('certificateStyle', data.data.account.certificateStyle);
+                        $.cookie('certificateNumber', data.data.account.certificateNumber);
+                        $.cookie('email', data.data.account.email);
+                        $.cookie('phone', data.data.account.phone);
+                        $.cookie('key', data.data.key);
 
                         window.location.href = interfaces.stdcenter
                     }

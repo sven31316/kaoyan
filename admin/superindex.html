@@ -28,7 +28,7 @@
         let local = $.cookie('localurl')
         var flag = $.cookie("isadminlogin")
 
-        if (flag != "yes" || flag == null ) {
+        if (flag !== "yes" || flag == null) {
             alert("请登录")
             window.location.href = interfaces.adminlogin
         }

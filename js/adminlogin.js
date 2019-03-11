@@ -18,11 +18,11 @@ $(document).ready(function () {
                 cache: false
             })
                 .done(function (data) {
-                    if (data.success == true) {
+                    if (data.success === true) {
                         alert(data.message)
                         $.cookie('isadminlogin', "yes")
                         window.location.href = interfaces.adminindex
-                    } else if (data.success == false) {
+                    } else if (data.success === false) {
                         alert(data.message)
                     }
 
@@ -35,7 +35,7 @@ $(document).ready(function () {
                     console.log("complete");
                 });
 
-        } else if (($("#superusername").val().length > 0 && $("#superpassword").val().length > 0) && ($("#adminusername").val().length == 0) && ($("#adminpassword").val().length == 0)) {
+        } else if (($("#superusername").val().length > 0 && $("#superpassword").val().length > 0) && ($("#adminusername").val().length === 0) && ($("#adminpassword").val().length === 0)) {
 
             $.ajax({
                 url: local + '/superManager/superLogin',
@@ -67,7 +67,7 @@ $(document).ready(function () {
                 .always(function () {
                     console.log("complete");
                 });
-        } else if (((($("#superadmin").val().length == 0) && ($("#superpassword").val().length == 0))) &&
+        } else if (((($("#superadmin").val().length === 0) && ($("#superpassword").val().length == 0))) &&
             ((($("#adminusername").val().length == 0) && ($("#adminpass").val().length == 0))) === 0) {
             alert("用户名或密码不能为空!")
         } else {

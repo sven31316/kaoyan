@@ -12,7 +12,7 @@ $(document).ready(function () {
     let local = $.cookie('localurl')
 
     $("#genkaoshenghao").click(function () {
-        if (chekallowed() == true) {
+        if (chekallowed() === true) {
 
 
             $.ajax({
@@ -234,6 +234,7 @@ $(document).ready(function () {
         $("#personinfo2").show('slow')
     });
     $("#showbaokaodanwei").click(function () {
+
         $("#personinfo2").hide('slow')
         $("#baokaodanwei").show('slow')
     });
