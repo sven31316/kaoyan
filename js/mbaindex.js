@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var interfaces = JSON.parse($.cookie('interfaces'))
-    let local = $.cookie('localurl')
+    let local = $.cookie('localurl');
     $("#searchbtn").click(function () {
 
 
